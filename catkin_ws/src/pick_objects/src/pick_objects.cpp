@@ -26,7 +26,7 @@ int main(int argc, char** argv){
   // Define a position and orientation for the robot to reach near the front door
   goal.target_pose.pose.position.x = -3.38;
   goal.target_pose.pose.position.y = -1.8;
-  goal.target_pose.pose.orientation.w = 0.00247;
+  goal.target_pose.pose.orientation.w = 1.0;
 
    // Send the goal position and orientation for the robot to reach
   ROS_INFO("Sending the robot Pick_Up ");
@@ -55,7 +55,7 @@ int main(int argc, char** argv){
   // Define a position and orientation for the robot to move back to the original spot
   goal.target_pose.pose.position.x = -0.053;
   goal.target_pose.pose.position.y = -3.36;
-  goal.target_pose.pose.orientation.w = -0.00143;
+  goal.target_pose.pose.orientation.w = 1.0;
 
   ROS_INFO("Sending the robot back to the original spot");
   ac.sendGoal(sink);
@@ -69,10 +69,6 @@ int main(int argc, char** argv){
   else
     ROS_INFO("Failed");
 
-// Wait 5 sec after reaching
-  while(!ac.waitForServer(ros::Duration(10.0))){
-    ROS_INFO("Waiting 5 seconds until the next move");
-  }
 
   return 0;
 }
